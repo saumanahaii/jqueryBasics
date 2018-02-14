@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Event Listeners 1</title>
+        <script
+  src="http://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+      <div class="text-center align-middle">
+        <input type="button" id="button" class="btn btn-ghost btn-ghost-bordered center-block" value="Click me!" style="margin-top:10px;">
+      </div>
+    </body>
+    <script>
+      var backgrounds = [
+        "../res/img/seamless_paper_texture.png",
+        "../res/img/wood_pattern.png",
+        "../res/img/circles-dark.png",
+        "../res/img/circles-light.png",
+        "../res/img/curls.png",
+        "../res/img/halftone-yellow.png",
+        "../res/img/hypnotize.png",
+        "../res/img/intersection.png",
+        "../res/img/polka-dots.png",
+        "../res/img/regal.png",
+        "../res/img/round.png",
+        "../res/img/spiration-dark.png",
+      ]
+      $("#button").click(function(){
+        //let's choose a random background!
+        var background = backgrounds[Math.floor(Math.random()*backgrounds.length)]
+        //sanity check, that we're getting what we expect
+        console.log(background);
+        //and let's set the background!
+        $("body").css("background-image", "url(" + background+ ")");
+      })
+    </script>
+</html>

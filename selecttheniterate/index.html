@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Select, then iterate</title>
+    </head>
+    <body>
+      <img src="http://placekitten.com/g/200/200">
+      <img src="http://placekitten.com/g/200/200">
+      <img src="http://placekitten.com/g/200/200">
+      <img src="http://placekitten.com/g/200/200">
+      <img src="http://placekitten.com/g/200/200">
+      <img src="http://placekitten.com/g/200/200">
+      <img src="http://placekitten.com/g/200/200">
+      <img src="http://placekitten.com/g/200/200">
+      <img src="http://placekitten.com/g/200/200">
+      <img src="http://placekitten.com/g/200/200">
+      <img src="http://placekitten.com/g/200/200">
+      <img src="http://placekitten.com/g/200/200">
+    </body>
+    <style>
+      body{
+        max-width: 980px;
+        margin: auto;
+        text-align: center;
+        background-color: black;
+        background-image: url(https://www.transparenttextures.com/patterns/dark-wood.png);
+      }
+      img{
+        /* Hey, take a look, I made a picture border! */
+        box-sizing: border-box;
+        border: 10px solid rgba(0,0,0,0);
+        background-color: black;
+        background-image: url(https://www.transparenttextures.com/patterns/crossword.png);
+      }
+    </style>
+    <script
+  src="http://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+  <script>
+    $("img").each(function(iterator){
+      //this refers to the selected element, in this case
+      console.log(this);
+      //The passed in variable to the anonymous function acts as the iteration value, eg 0,1,2...
+      console.log(iterator);
+      this.style= "transform: rotate(10deg);"
+    })
+  </script>
+</html>

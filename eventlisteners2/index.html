@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Event Listeners 2</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script
+  src="http://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row panel panel-default">
+                <div class="panel panel-default panel-header">
+                    <h1 class="text-center">Event Listeners on Dynamic Content</h1>
+                </div>
+                <div class="">
+                    <p>Event listeners are created only once, when the script is run.  If we want to put them onto content that has yet to be added to the DOM, we have to get a bit more clever.  Here I'm making buttons from URL's, and letting you click them.  But I'm defining them in code.</p>
+                </div>
+            </div>
+            <div class="row panel panel-default panel-body">
+                <h3 class="text-center">Click a background...</h3>
+                <ul id="buttonContainer" class="list-group text-center">
+                </ul>
+            </div>
+            </div>
+        </div>
+    </body>
+    <style>
+      .panel{
+        background: rgba(255,255,255,0.5);
+      }
+    </style>
+    <script>
+
+    //let's add the event listener!
+    $("#buttonContainer").on("click", "button", function(){
+      //show the clicked button's text
+      console.log($(this).html())
+      //set the background
+      $("body").css("background-image", "url(" + $(this).attr("href") + ")")
+    })
+
+    var backgrounds = [
+      "../res/img/seamless_paper_texture.png",
+      "../res/img/wood_pattern.png",
+      "../res/img/circles-dark.png",
+      "../res/img/circles-light.png",
+      "../res/img/curls.png",
+      "../res/img/halftone-yellow.png",
+      "../res/img/hypnotize.png",
+      "../res/img/intersection.png",
+      "../res/img/polka-dots.png",
+      "../res/img/regal.png",
+      "../res/img/round.png",
+      "../res/img/spiration-dark.png",
+    ]
+    backgrounds.forEach(function(url){
+      console.log(url)
+      //append the links.  Use the slice method to get rid of the path and extension
+        $("#buttonContainer").append("<li class='list-group-item'><button class='btn' href=" + url + ">" +url.slice(11, -4) + "</button></li>")
+    })
+    </script>
+</html>

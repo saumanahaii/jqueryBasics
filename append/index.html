@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Guest List</title>
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    </head>
+    <body>
+        <div class="guestList" id="notGoing"><label for="notGoing"><h2>Not Going</h2></label><hr /><ul></ul></div>
+        <div class="guestList" id="going"><label for="going"><h2>Going</h2><hr /></label><ul></ul></div>
+    </body>
+    <style>
+      html{
+        background-image: url(../res/img/wood_pattern.png);
+        font-family: 'Raleway', sans-serif;
+        text-align: center;
+      }
+      .guestList{
+        display: inline-block;
+        vertical-align: top;
+        width: 15em;
+        height: 21em;
+        background-color: white;
+        border-radius: 20px;
+        margin: 3em;
+        box-shadow: 3px 3px 15px black;
+        background-image: url(../res/img/seamless_paper_texture.png);
+      }
+      .guestList ul{
+        list-style: none;
+        text-decoration: underline;
+        line-height: 1.5em;
+        text-align: left;
+      }
+
+      .guestList label{
+        display: block;
+        text-align: center;
+        vertical-align: middle;
+      }
+    </style>
+    <script
+  src="http://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+    <script>
+    //going and not going variables
+    var going = [];
+    var notGoing = [];
+    //Doing a fetch to an api to get some names!  You'll be doing this more later.
+    //For now, just know the code's in the function part and that this is an asynchronous call.
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(function(response){return response.json()})
+      .then(function(json){
+        //if you want to see what we got from the code above, uncomment the line below!
+        //console.log(json)
+        //get the names out of the object!
+        var people = json.map(person=>person.name);
+        people.forEach((person)=>{
+          //now var's flip a coin!  You know how to do this already, so here's a cool bit of shorthand.
+          //This is called a ternary statement, if you're interested, and it represents an if/else block.
+          Math.floor(Math.random()*2) === 0 ? going.push(person) : notGoing.push(person);
+        })
+        //Here's our compvared going and not going lists!
+        console.log("going:")
+        console.table(going)
+        console.log("notGoing:")
+        console.table(notGoing)
+        //now var's append them to the appropriate list.
+        going.forEach(person=>{
+          $("#going ul:first").append('<li>' + person + "</li>");
+        })
+        notGoing.forEach(person=>{
+          $("#notGoing ul:first").append('<li>' + person + "</li>");
+        })
+    });
+    </script>
+</html>
